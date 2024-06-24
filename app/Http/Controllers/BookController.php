@@ -27,16 +27,14 @@ class BookController extends Controller
             'highest_rated_last_6months' => $books->highestRatedLast6Months(),
             default => $books->latest()->withAvgRating()->withReviewsCount()
         };
-
         $cacheKey = 'books:' . $filter . ':' . $title;
         $books =
             cache()->remember(
                 $cacheKey,
                 3600,
-                fn() =>
-                $books->get()
-            );
-
+                fn() => $books->latest()->paginate(10)
+         ); 
+       
         return view('books.index', ['books' => $books]);
     }
 
@@ -59,7 +57,7 @@ class BookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(string $id)
     {
         $cacheKey = 'book:' . $id;
 

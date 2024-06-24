@@ -18,5 +18,6 @@
     </select>
 
     <button type="submit" class="btn">Add Review</button>
+    <a href="{{ url()->previous() }}" class="btn">Back</button>
   </form>
 @endsection

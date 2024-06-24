@@ -25,3 +25,8 @@ Route::resource('books', BookController::class)
 Route::resource('books.reviews', ReviewController::class)
     ->scoped(['review' => 'book'])
     ->only(['create', 'store']);
+
+
+Route::fallback(function () {
+   return view('page404');
+});

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <title>Book Reviews</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   {{-- blade-formatter-disable --}}
   <style type="text/tailwindcss">
     .btn {
@@ -63,8 +63,11 @@
   {{-- blade-formatter-enable --}}
 </head>
 
-<body class="container mx-auto mt-10 mb-10 max-w-3xl">
-  @yield('content')
+<body> 
+  @include('layouts.header')
+  <div class="container mx-auto mt-10 mb-10 max-w-3xl">
+    @yield('content')
+  </div>
 </body>
 
 </html>
